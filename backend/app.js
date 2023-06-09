@@ -53,4 +53,9 @@ app.use("/api/v2/withdraw", withdraw);
 // it's for ErrorHandling
 app.use(ErrorHandler);
 
+// upload files
+app.post("/upload", upload.single("file"), (req, res) => {
+  // do something with the file
+});
+
 module.exports = app;
