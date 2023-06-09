@@ -5,6 +5,8 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
+const multer = require("multer");
+const upload = require("./multer.js").upload;
 
 app.use(cors({
   origin: 'https://dkshopo.vercel.app',
@@ -52,10 +54,11 @@ app.use("/api/v2/withdraw", withdraw);
 
 // it's for ErrorHandling
 app.use(ErrorHandler);
-
+/*
 // upload files
 app.post("/upload", upload.single("file"), (req, res) => {
   // do something with the file
 });
-
+*/
+app.use(upload.single("image"));
 module.exports = app;
